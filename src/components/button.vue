@@ -1,11 +1,18 @@
 <template>
   <div>
-    <button class="c-button">按钮</button>
+    <button class="c-button">
+      <svg class="icon" v-if="icon">
+        <use :xlink:href='`#i${icon}`'></use>
+      </svg>
+      <slot></slot>
+    </button>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props:['icon', 'iconPosition']
+};
 </script>
 
 <style lang="scss">
