@@ -1,0 +1,19 @@
+{
+  "name": "ui-wheel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YangJ0605/ui-wheel.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YangJ0605/ui-wheel/issues"
+  },
+  "homepage": "https://github.com/YangJ0605/ui-wheel#readme"
+}
