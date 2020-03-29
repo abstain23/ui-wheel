@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/YangJ0605/ui-wheel/issues"
   },
-  "homepage": "https://github.com/YangJ0605/ui-wheel#readme"
+  "homepage": "https://github.com/YangJ0605/ui-wheel#readme",
+  "dependencies": {
+    "vue": "^2.6.11"
+  }
 }
