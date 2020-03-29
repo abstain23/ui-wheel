@@ -18,5 +18,8 @@
   "homepage": "https://github.com/YangJ0605/ui-wheel#readme",
   "dependencies": {
     "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.9.2"
   }
 }
