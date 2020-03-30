@@ -12443,11 +12443,16 @@ exports.default = void 0;
 //
 //
 //
+//
 var _default = {
   props: {
     icon: {
       type: String,
       default: ""
+    },
+    loading: {
+      type: Boolean,
+      default: false
     },
     iconPosition: {
       type: String,
@@ -12481,11 +12486,23 @@ exports.default = _default;
     "button",
     {
       staticClass: "c-button",
-      class: ((_obj = {}), (_obj["icon-" + _vm.iconPosition] = true), _obj)
+      class: ((_obj = {}), (_obj["icon-" + _vm.iconPosition] = true), _obj),
+      on: {
+        click: function($event) {
+          return _vm.$emit("click")
+        }
+      }
     },
     [
-      _vm.icon
+      _vm.icon && !_vm.loading
         ? _c("c-icon", { staticClass: "icon", attrs: { name: _vm.icon } })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.loading
+        ? _c("c-icon", {
+            staticClass: "icon loading",
+            attrs: { name: "loading" }
+          })
         : _vm._e(),
       _vm._v(" "),
       _c("div", { staticClass: "content" }, [_vm._t("default")], 2)
@@ -12592,6 +12609,97 @@ render._withStripped = true
       
       }
     })();
+},{"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/components/button-group.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+//
+//
+//
+//
+//
+//
+var _default = {
+  mounted: function mounted() {
+    console.log(this.$el.children);
+
+    var _iterator = _createForOfIteratorHelper(this.$el.children),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var node = _step.value;
+        var name = node.nodeName.toLowerCase();
+
+        if (name !== 'button') {
+          console.warn("c-button-group\u7684\u5B50\u5143\u7D20\u5EFA\u8BAE\u5168\u90E8\u662Fc-button\uFF0C\u4F46\u662F\u4F60\u5199\u7684\u662F".concat(name, ",\u8FD9\u6837\u53EF\u80FD\u5BFC\u81F4\u67D0\u4E9B\u6837\u5F0F\u5931\u6548"));
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  }
+};
+exports.default = _default;
+        var $fa5dbe = exports.default || module.exports;
+      
+      if (typeof $fa5dbe === 'function') {
+        $fa5dbe = $fa5dbe.options;
+      }
+    
+        /* template */
+        Object.assign($fa5dbe, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "c-button-group" }, [_vm._t("default")], 2)
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: null,
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$fa5dbe', $fa5dbe);
+          } else {
+            api.reload('$fa5dbe', $fa5dbe);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
 },{"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
@@ -12601,17 +12709,23 @@ var _button = _interopRequireDefault(require("./components/button.vue"));
 
 var _icon = _interopRequireDefault(require("./components/icon.vue"));
 
+var _buttonGroup = _interopRequireDefault(require("./components/button-group.vue"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _vue.default.component('c-button', _button.default);
 
 _vue.default.component('c-icon', _icon.default);
 
+_vue.default.component('c-button-group', _buttonGroup.default);
+
 new _vue.default({
   el: '#app',
-  data: {}
+  data: {
+    loading1: false
+  }
 });
-},{"vue":"node_modules/vue/dist/vue.common.js","./components/button.vue":"src/components/button.vue","./components/icon.vue":"src/components/icon.vue"}],"../../../AppData/Roaming/npm/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"vue":"node_modules/vue/dist/vue.common.js","./components/button.vue":"src/components/button.vue","./components/icon.vue":"src/components/icon.vue","./components/button-group.vue":"src/components/button-group.vue"}],"../../../AppData/Roaming/npm/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
