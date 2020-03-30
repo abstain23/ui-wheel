@@ -55,6 +55,8 @@
 }
 .c-button-group > .c-button {
   border-radius: 0;
+}
+.c-button-group > .c-button:not(:first-child) {
   margin-left: -1px;
 }
 .c-button-group > .c-button:first-child {

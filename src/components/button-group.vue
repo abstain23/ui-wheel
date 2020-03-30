@@ -23,8 +23,10 @@
     display: inline-flex;
     vertical-align: middle;
     > .c-button {
+      &:not(:first-child) {
+          margin-left: -1px;
+      }
       border-radius: 0;
-      margin-left: -1px;
       &:first-child {
         border-top-left-radius: var(--border-radius);
         border-bottom-left-radius: var(--border-radius);
