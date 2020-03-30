@@ -34,3 +34,7 @@
 .c-button.icon-right > .content {
   order: 1;
 }
+.c-icon {
+  width: 1em;
+  height: 1em;
+}
