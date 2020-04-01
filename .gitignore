@@ -1,6 +1,7 @@
-node_modules/
-.cache/
+/node_modules
 
-dist/
+.cache
+
+/dist
 
 yarn-error.log
