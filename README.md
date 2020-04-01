@@ -4,7 +4,22 @@
 
 ## 介绍
 
+学习Vue过程中制作的一个UI框架~
+
 ## 开始使用
+
+1.添加 CSS 样式 
+
+  使用本框架前，请在 CSS 中开启 border-box
+
+  ```
+   *, *::before, *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+  ```
+  IE8以上支持。
 
 ## 文档
 
