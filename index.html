@@ -35,36 +35,75 @@
 
 <body>
   <div id="app">
-    <c-button @click='loading1 = !loading1' :loading='loading1'>
-      按钮
-    </c-button>
-    <c-button icon='settings' icon-position='left'>
-      按钮
-    </c-button>
-    <c-button icon='settings' icon-position='right' icon='loading'>
-      按钮
-    </c-button>
-    <c-button :loading='true' icon-position='right'>
-      按钮
-    </c-button>
-    <c-icon name='download'></c-icon>
-    <c-icon name='bottom'></c-icon>
-    <c-button-group>
-      <c-button icon='left' icon-position='left'>
-        上一页
+    <div>
+      <!-- 双向绑定 -->
+    <c-input @input='value = $event' :value='value'></c-input> 
+    <!-- 双向绑定语法糖 -->
+    <c-input v-model='value'></c-input>
+    {{value}}
+    </div>
+    <div>
+      <c-input @blur='onBlur'></c-input>
+    </div>
+    <div>
+      <c-input @focus='onBlur'></c-input>
+    </div>
+    <div>
+      <c-input @change='value = $event'></c-input>
+    </div>
+    <c-input></c-input>
+    <c-input disabled></c-input>
+    <c-input readonly></c-input>
+    <c-input error='error'></c-input>
+    <div style="margin-top: 20px;">
+      <c-button @click='loading1 = !loading1' :loading='loading1'>
+        按钮
       </c-button>
-      <c-button>
-        更多
+      <c-button icon='settings' icon-position='left'>
+        按钮
       </c-button>
-      <c-button icon='right' icon-position='right'>
-        下一页
+      <c-button icon='settings' icon-position='right' icon='loading'>
+        按钮
       </c-button>
-    </c-button-group>
+      <c-button :loading='true' icon-position='right'>
+        按钮
+      </c-button>
+      <c-icon name='download'></c-icon>
+      <c-icon name='bottom'></c-icon>
+      <c-button-group>
+        <c-button icon='left' icon-position='left'>
+          上一页
+        </c-button>
+        <c-button>
+          更多
+        </c-button>
+        <c-button icon='right' icon-position='right'>
+          下一页
+        </c-button>
+      </c-button-group>
+    </div>
     <div id="test"></div>
+    <div>
+      <input type="text" name="" id="tt">
+    </div>
+    <div id="testEvent">测试自定义事件</div>
   </div>
   <!-- <script src="./node_modules/vue/dist/vue.esm.js"></script> -->
   <script src="./src/app.js"> </script>
-  <script src="//at.alicdn.com/t/font_1722351_nc1djiyhngf.js"></script>
+  <script>
+    var i = document.getElementById('tt')
+    tt.addEventListener('change', (e) => {
+      console.log(e)
+      console.log(i)
+      console.log(i.value)
+    })
+    var tt2 = document.getElementById('testEvent')
+    var event = new Event('myEvent')
+    tt2.addEventListener('myEvent', (e) => {
+      console.log(e.target.textContent)
+    })
+    tt2.dispatchEvent(event)
+  </script>
 </body>
 
 </html>

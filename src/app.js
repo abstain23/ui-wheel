@@ -2,15 +2,27 @@ import Vue from 'vue'
 import Button from './components/button.vue'
 import Icon from './components/icon.vue'
 import ButtonGroup from './components/button-group.vue'
+import Input from './components/input/input.vue'
 
 Vue.component('c-button',Button)
 Vue.component('c-icon', Icon)
 Vue.component('c-button-group', ButtonGroup)
+Vue.component('c-input', Input)
 
 new Vue({
   el: '#app',
   data: {
-    loading1: false
+    loading1: false,
+    value:''
+  },
+  methods: {
+    inputChange(e) {
+      // console.log(e)
+      this.value = e
+    },
+    onBlur(e) {
+      console.log(e)
+    }
   }
 })
 
@@ -30,7 +42,8 @@ let expect = chai.expect
   let useElement = vm.$el.querySelector('use')
   console.log(useElement)
   const href = useElement.getAttribute('xlink:href')
-  expect(href).to.eq('#isettings')
+  console.log(href)
+  expect(href).to.eq('#i-settings')
   vm.$el.remove()
   vm.$destroy()
 }
@@ -46,7 +59,8 @@ let expect = chai.expect
   let useElement = vm.$el.querySelector('use')
   console.log(useElement)
   const href = useElement.getAttribute('xlink:href')
-  expect(href).to.eq('#iloading')
+  console.log(href)
+  expect(href).to.eq('#i-loading')
   vm.$el.remove()
   vm.$destroy()
 }

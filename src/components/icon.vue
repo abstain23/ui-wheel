@@ -1,10 +1,11 @@
 <template>
   <svg class="c-icon">
-        <use :xlink:href="`#i${name}`" />
+        <use :xlink:href="`#i-${name}`" />
   </svg>
 </template>
 
 <script>
+  import '../svg.js'
   export default {
     props: ['name']
   }
