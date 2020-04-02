@@ -31,10 +31,26 @@
       margin: 100px 100px;
     }
   </style>
+  <style>
+    .row {
+      display: flex;
+    }
+    .col {
+      height: 100px;
+      background-color: blue;
+      width: 50%;
+      border: 1px solid red;
+    }
+  </style>
 </head>
 
 <body>
   <div id="app">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+    <hr>
     <div>
       <!-- 双向绑定 -->
     <c-input @input='value = $event' :value='value'></c-input> 
