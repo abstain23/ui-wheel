@@ -27,124 +27,44 @@
       font-size: var(--fons-size);
       filter: grayscale(100%);
     }
-
-    #app {
-      margin: 100px 100px;
+    .demo {
+      border: 1px solid gray;
+      height: 50px;
     }
-  </style>
-  <style>
+    .layout {
+      height: 100vh;
+    }
+    .header {
+      height: 100px;
+      background-color: #ccc;
+    }
+    .content {
+      flex: 1;
+    }
+    .footer {
+      height: 100px;
+      background-color: gray;
+    }
+    .sider {
+      background-color: green;
+      width: 100px;
+      height: 100%;
+    }
   </style>
 </head>
 
 <body>
   <div id="app">
-    <c-row>
-      <c-col span='10' style="border: 1px solid red;"></c-col>
-      <c-col span='10' style="border: 1px solid red;"></c-col>
-    </c-row>
-
-    <hr>
-    <c-row gutter='30'>
-      <c-col span='2' offset='2' :phone='{span:10}'>
-        <div style="background-color: red;width: 100%;height: 100%;"></div>
-      </c-col>
-      <c-col span='3' :phone='{span:10}'>
-        <div style="background-color: red;width: 100%;height: 100%;"></div>
-      </c-col>
-      <!-- <c-col span='17'><div style="background-color: red;width: 100%;height: 100%;"></div></c-col> -->
-    </c-row>
-    <c-row style="margin: 20px 0;">
-      <c-col span='2'>
-        <div style="background-color: red;width: 100%;height: 100%;"></div>
-      </c-col>
-      <c-col span='3'>
-        <div style="background-color: red;width: 100%;height: 100%;"></div>
-      </c-col>
-      <c-col span='19'>
-        <div style="background-color: red;width: 100%;height: 100%;"></div>
-      </c-col>
-    </c-row>
-
-    <c-row gutter='30' align='right'>
-      <c-col span='4'>1111</c-col>
-      <c-col span='3'>1111</c-col>
-      <c-col span='5'>1111</c-col>
-    </c-row>
-
-    <hr style="margin: 10px;">
-    <div>
-      <!-- 双向绑定 -->
-      <c-input @input='value = $event' :value='value'></c-input>
-      <!-- 双向绑定语法糖 -->
-      <c-input v-model='value'></c-input>
-      {{value}}
-    </div>
-    <div>
-      <c-input @blur='onBlur'></c-input>
-    </div>
-    <div>
-      <c-input @focus='onBlur'></c-input>
-    </div>
-    <div>
-      <c-input @change='value = $event'></c-input>
-    </div>
-    <c-input></c-input>
-    <c-input disabled></c-input>
-    <c-input readonly></c-input>
-    <c-input error='error'></c-input>
-    <div style="margin-top: 20px;">
-      <c-button @click='loading1 = !loading1' :loading='loading1'>
-        按钮
-      </c-button>
-      <c-button icon='settings' icon-position='left'>
-        按钮
-      </c-button>
-      <c-button icon='settings' icon-position='right' icon='loading'>
-        按钮
-      </c-button>
-      <c-button :loading='true' icon-position='right'>
-        按钮
-      </c-button>
-      <c-icon name='download'></c-icon>
-      <c-icon name='bottom'></c-icon>
-      <c-button-group>
-        <c-button icon='left' icon-position='left'>
-          上一页
-        </c-button>
-        <c-button>
-          更多
-        </c-button>
-        <c-button icon='right' icon-position='right'>
-          下一页
-        </c-button>
-      </c-button-group>
-    </div>
-    <div id="test"></div>
-    <div>
-      <input type="text" name="" id="tt">
-    </div>
-    <div id="testEvent" data-test="testdata">测试自定义事件</div>
+    <c-layout>
+      <c-header></c-header>
+      <c-layout>
+        <c-sider></c-sider>
+        <c-content></c-content>
+      </c-layout>
+      <c-footer></c-footer>
+    </c-layout>
   </div>
-  <!-- <script src="./node_modules/vue/dist/vue.esm.js"></script> -->
   <script src="./src/app.js"> </script>
-  <script>
-    var i = document.getElementById('tt')
-    tt.addEventListener('change', (e) => {
-      console.log(e)
-      console.log(i)
-      console.log(i.value)
-    })
-    var tt2 = document.getElementById('testEvent')
-    console.log(tt2.getAttribute('data-test'))
-    var event = new Event('myEvent')
-    tt2.addEventListener('myEvent', (e) => {
-      console.log(e.target.textContent)
-    })
-    tt2.dispatchEvent(event)
-    tt2.addEventListener('click', () => {
-      tt2.dataset.sss = 'sss'
-    })
-  </script>
 </body>
 
 </html>

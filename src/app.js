@@ -5,6 +5,13 @@ import ButtonGroup from './components/button-group.vue'
 import Input from './components/input/input.vue'
 import Col from './components/row_col/col.vue'
 import Row from './components/row_col/row.vue'
+import Header from './components/layout/header.vue'
+import Layout from './components/layout/layout.vue'
+import Sider from './components/layout/sider.vue'
+import Content from './components/layout/content.vue'
+import Footer from './components/layout/footer.vue'
+
+
 
 Vue.component('c-button',Button)
 Vue.component('c-icon', Icon)
@@ -12,6 +19,13 @@ Vue.component('c-button-group', ButtonGroup)
 Vue.component('c-input', Input)
 Vue.component('c-col', Col)
 Vue.component('c-row', Row)
+Vue.component('c-header', Header)
+Vue.component('c-layout', Layout)
+Vue.component('c-sider', Sider)
+Vue.component('c-content', Content)
+Vue.component('c-footer', Footer)
+
+
 
 new Vue({
   el: '#app',
@@ -30,6 +44,7 @@ new Vue({
   }
 })
 
+/*
 //单元测试
 import chai from 'chai'
 import spies from 'chai-spies'
@@ -116,3 +131,4 @@ let expect = chai.expect
   button.click()
   expect(spy).to.have.been.called()
 }
+*/
