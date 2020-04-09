@@ -10,7 +10,7 @@ import Layout from './components/layout/layout.vue'
 import Sider from './components/layout/sider.vue'
 import Content from './components/layout/content.vue'
 import Footer from './components/layout/footer.vue'
-
+import Toast from './components/toast/toast.js'
 
 
 Vue.component('c-button',Button)
@@ -24,7 +24,7 @@ Vue.component('c-layout', Layout)
 Vue.component('c-sider', Sider)
 Vue.component('c-content', Content)
 Vue.component('c-footer', Footer)
-
+Vue.use(Toast)
 
 
 new Vue({
@@ -40,6 +40,20 @@ new Vue({
     },
     onBlur(e) {
       console.log(e)
+    },
+    testToast() {
+      this.$toast('这是一条信息',{
+        closeButton:{
+          text:'ok',
+          callback(toast) {
+            toast.test()
+            console.log('cc')
+          }
+        },
+        enableHtml: true,
+        autoClose: false,
+        position: 'center'
+      })
     }
   }
 })
