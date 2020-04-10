@@ -26,7 +26,6 @@
     body {
       font-size: var(--fons-size);
       height: 100vh;
-      filter: grayscale(100%);
     }
 
     .demo {
@@ -62,10 +61,27 @@
 
 <body>
   <div id="app">
-    <button @click='testToast1'>top</button>
+    <c-tabs :selected='tabSelected' @update:selected='yy'>
+      <c-tabs-head>
+        <c-tabs-item name='sports' disabled>
+          体育
+        </c-tabs-item>
+        <c-tabs-item name='caijing'>
+          财经
+        </c-tabs-item>
+        <c-tabs-item name='video'>
+          视频
+        </c-tabs-item>
+      </c-tabs-head>
+      <c-tabs-body>
+        <c-tabs-pane name='sports'>体育相关</c-tabs-pane>
+        <c-tabs-pane name='caijing'>财经相关</c-tabs-pane>
+        <c-tabs-pane name='video'>视频相关</c-tabs-pane>
+      </c-tabs-body>
+    </c-tabs>
+    <!-- <button @click='testToast1'>top</button>
     <button @click='testToast2'>center</button>
-    <button @click='testToast3'>bottom</button>
-
+    <button @click='testToast3'>bottom</button> -->
   </div>
   <script src="./src/app.js"> </script>
 </body>

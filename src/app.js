@@ -11,6 +11,11 @@ import Sider from './components/layout/sider.vue'
 import Content from './components/layout/content.vue'
 import Footer from './components/layout/footer.vue'
 import Toast from './components/toast/toast.js'
+import Tabs from './components/tabs/tabs.vue'
+import TabsHead from './components/tabs/tabs-head.vue'
+import TabsItem from './components/tabs/tabs-item.vue'
+import TabsBody from './components/tabs/tabs-body.vue'
+import TabsPane from './components/tabs/tabs-pane.vue'
 
 
 Vue.component('c-button', Button)
@@ -24,6 +29,11 @@ Vue.component('c-layout', Layout)
 Vue.component('c-sider', Sider)
 Vue.component('c-content', Content)
 Vue.component('c-footer', Footer)
+Vue.component('c-tabs', Tabs)
+Vue.component('c-tabs-head', TabsHead)
+Vue.component('c-tabs-item', TabsItem)
+Vue.component('c-tabs-body', TabsBody)
+Vue.component('c-tabs-pane', TabsPane)
 Vue.use(Toast)
 
 
@@ -31,9 +41,15 @@ new Vue({
   el: '#app',
   data: {
     loading1: false,
-    value: ''
+    value: '',
+    tabSelected: 'sports'
+  },
+  created() {
   },
   methods: {
+    yy(data) {
+      console.log('ccc', data)
+    },
     inputChange(e) {
       // console.log(e)
       this.value = e
