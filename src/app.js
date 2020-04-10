@@ -13,7 +13,7 @@ import Footer from './components/layout/footer.vue'
 import Toast from './components/toast/toast.js'
 
 
-Vue.component('c-button',Button)
+Vue.component('c-button', Button)
 Vue.component('c-icon', Icon)
 Vue.component('c-button-group', ButtonGroup)
 Vue.component('c-input', Input)
@@ -31,7 +31,7 @@ new Vue({
   el: '#app',
   data: {
     loading1: false,
-    value:''
+    value: ''
   },
   methods: {
     inputChange(e) {
@@ -41,10 +41,19 @@ new Vue({
     onBlur(e) {
       console.log(e)
     },
-    testToast() {
-      this.$toast('这是一条信息',{
-        closeButton:{
-          text:'ok',
+    testToast1() {
+      this.testToast('top')
+    },
+    testToast2() {
+      this.testToast('center')
+    },
+    testToast3() {
+      this.testToast('bottom')
+    },
+    testToast(position) {
+      this.$toast('这是一条信息', {
+        closeButton: {
+          text: 'ok',
           callback(toast) {
             toast.test()
             console.log('cc')
@@ -52,7 +61,7 @@ new Vue({
         },
         enableHtml: true,
         autoClose: false,
-        position: 'center'
+        position
       })
     }
   }

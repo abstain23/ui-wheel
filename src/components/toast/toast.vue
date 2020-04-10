@@ -1,11 +1,13 @@
 <template>
-  <div class="toast" ref="toast" :class="positionClass">
-    <div class="message">
-      <slot v-if="!enableHtml"></slot>
-      <div v-else v-html="$slots.default"></div>
+  <div class="wrapper" :class="positionClass">
+    <div class="toast" ref="toast">
+      <div class="message">
+        <slot v-if="!enableHtml"></slot>
+        <div v-else v-html="$slots.default"></div>
+      </div>
+      <div class="line" ref="line"></div>
+      <span class="close" @click="onCloseClick">{{closeButton.text}}</span>
     </div>
-    <div class="line" ref="line"></div>
-    <span class="close" @click="onCloseClick">{{closeButton.text}}</span>
   </div>
 </template>
 
@@ -37,11 +39,11 @@ export default {
       type: Boolean,
       default: false
     },
-    position:{
-      type:String,
-      default: 'top',
-      validator(value){
-        return ['top', 'bottom', 'center'].indexOf(value) >= 0
+    position: {
+      type: String,
+      default: "top",
+      validator(value) {
+        return ["top", "bottom", "center"].indexOf(value) >= 0;
       }
     }
   },
@@ -53,9 +55,9 @@ export default {
       }, this.autoCloseDelay);
     }
   },
-  computed:{
+  computed: {
     positionClass() {
-      return `position-${this.position}`
+      return `position-${this.position}`;
     }
   },
   methods: {
@@ -67,6 +69,7 @@ export default {
     },
     close() {
       this.$el.remove();
+      this.$emit("beforeClose");
       this.$destroy();
     },
     onCloseClick() {
@@ -86,9 +89,61 @@ export default {
 $font-size: 14px;
 $toast-height: 40px;
 $toast-bg: rgba(0, 0, 0, 0.74);
-.toast {
+$animation-duration: 500ms;
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+.wrapper {
   position: fixed;
   left: 50%;
+  &.position-top {
+    top: 0;
+    transform: translateX(-50%);
+    .toast {
+      animation: slide-down $animation-duration;
+    }
+  }
+  &.position-bottom {
+    bottom: 0;
+    transform: translateX(-50%);
+    .toast {
+      animation: slide-up $animation-duration;
+    }
+  }
+  &.position-center {
+    top: 50%;
+    transform: translate(-50%, -50%);
+    .toast {
+      animation: fade-in $animation-duration;
+    }
+  }
+}
+.toast {
   font-size: $font-size;
   line-height: 1.5;
   min-height: $toast-height;
@@ -110,18 +165,6 @@ $toast-bg: rgba(0, 0, 0, 0.74);
   .close {
     flex-shrink: 0;
     padding-left: 16px;
-  }
-  &.position-top {
-    top: 0;
-    transform: translateX(-50%);
-  }
-  &.position-bottom {
-    bottom: 0;
-    transform: translateX(-50%);
-  }
-  &.position-center {
-    top: 50%;
-    transform: translate(-50%, -50%);
   }
 }
 </style>
