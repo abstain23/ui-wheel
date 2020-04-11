@@ -20,8 +20,8 @@ export default {
     }
   },
   created() {
-    this.eventBus.$on("update:selected", data => {
-      this.name === data ? (this.showPane = true) : (this.showPane = false);
+    this.eventBus.$on("update:selected", name => {
+     this.showPane = this.name === name
     });
   },
   methods: {}
@@ -29,4 +29,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.tabs-pane {
+  padding: 0 1em;
+}
 </style>

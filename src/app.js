@@ -42,7 +42,7 @@ new Vue({
   data: {
     loading1: false,
     value: '',
-    tabSelected: 'sports'
+    tabSelected: 'video'
   },
   created() {
   },

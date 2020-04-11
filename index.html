@@ -63,7 +63,7 @@
   <div id="app">
     <c-tabs :selected='tabSelected' @update:selected='yy'>
       <c-tabs-head>
-        <c-tabs-item name='sports' disabled>
+        <c-tabs-item name='sports' disabled icon='settings'>
           体育
         </c-tabs-item>
         <c-tabs-item name='caijing'>
@@ -72,6 +72,7 @@
         <c-tabs-item name='video'>
           视频
         </c-tabs-item>
+        <button slot="action">设置</button>
       </c-tabs-head>
       <c-tabs-body>
         <c-tabs-pane name='sports'>体育相关</c-tabs-pane>
@@ -81,7 +82,7 @@
     </c-tabs>
     <!-- <button @click='testToast1'>top</button>
     <button @click='testToast2'>center</button>
-    <button @click='testToast3'>bottom</button> -->
+    <button @click='testToast3'>bottom</button>
   </div>
   <script src="./src/app.js"> </script>
 </body>

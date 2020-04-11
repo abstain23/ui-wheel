@@ -35,8 +35,23 @@ export default {
     // console.log(this.selected);
   },
   mounted() {
-    this.$emit("update:selected", "yyyy");
-    this.eventBus.$emit("update:selected", this.selected);
+    // this.$emit("update:selected", "yyyy");
+    if(!this.$children.length) {
+      console.warn('tabs组件的子组件只能为tabs-head和tabs-body')
+    }
+    this.$children.forEach(item => {
+      if(item.$options.name === 'TabsHead') {
+        item.$children.forEach(child => {
+          // console.log(child.name)
+          if(child.$options.name === 'TabsItem' && child.name === this.selected) {
+            this.eventBus.$emit("update:selected", this.selected, child);
+          }
+        })
+      }
+      if(item.$options.name !== 'TabsHead' && item.$options.name !== 'TabsBody') {
+        console.warn('tabs组件的子组件只能为tabs-head和tabs-body')
+      }
+    })
   }
 };
 </script>
